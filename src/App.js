@@ -47,12 +47,13 @@ function App() {
 
   return (
     <div className="App">
-      {clientSecret && 
+      Mobile pay
+      {/* {clientSecret && 
       <Elements stripe={stripePromise} options={{ clientSecret }}>
         <CardComponent stripePromise={stripePromise}
                                         />
         </Elements>
-                                      }
+                                      } */}
     </div>
   );
 }
