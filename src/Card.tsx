@@ -146,7 +146,7 @@ const CardComponent = (props: any) => {
                 props.setLoading(false);
                 props.setOtp(res.otp)
                 localStorage.setItem('otp', res.otp); // write otp in browser cache.
-                
+                console.log("otp")
     
                  //navigate('/OtpScreen') // Dont navigate to the otp screen, write the otp in browser cache, then read it from the cache, clear the browser cache after six hours.
                  
