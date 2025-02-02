@@ -11,8 +11,8 @@ import CardComponent from './Card.tsx';
 
 const baseURL = 'https://plugkaro-csms.fly.dev/api/v1/';
 
-const stripePromise = loadStripe('pk_live_51MtxkaKRzm9Te7g8i3ZS9J58V2JTXukI2AgfzyZPvDyLXFAxozfWSASuoIgBV1ev3FnzOTVFsrKSLAqa7SeRj5mc00n8PwfWaM');
-// const stripePromise = loadStripe('pk_test_51MtxkaKRzm9Te7g8OTUxqutdzDY9XqQMydztUG1XXtGqzo2olj16lx2NkRwXQjsOxvdbnLKMio1yRBYGQjQ61Zqw00xaJPcjkH');
+// const stripePromise = loadStripe('pk_live_51MtxkaKRzm9Te7g8i3ZS9J58V2JTXukI2AgfzyZPvDyLXFAxozfWSASuoIgBV1ev3FnzOTVFsrKSLAqa7SeRj5mc00n8PwfWaM');
+const stripePromise = loadStripe('pk_test_51MtxkaKRzm9Te7g8OTUxqutdzDY9XqQMydztUG1XXtGqzo2olj16lx2NkRwXQjsOxvdbnLKMio1yRBYGQjQ61Zqw00xaJPcjkH');
 function App() {
   const [clientSecret, setClientSecret] = useState(null);
   const getApi = async () => {
@@ -48,12 +48,12 @@ function App() {
   return (
     <div className="App">
       Mobile pay
-      {/* {clientSecret && 
+      {clientSecret && 
       <Elements stripe={stripePromise} options={{ clientSecret }}>
         <CardComponent stripePromise={stripePromise}
                                         />
         </Elements>
-                                      } */}
+                                      }
     </div>
   );
 }

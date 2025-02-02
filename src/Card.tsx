@@ -39,68 +39,68 @@ const CardComponent = (props: any) => {
     return resp.data;
     };
 
-    // useEffect(() => {
-    //     if (stripe) {
-    //       foo();
-    //     }
-    //   }, [stripe]);
+    useEffect(() => {
+        if (stripe) {
+          foo();
+        }
+      }, [stripe]);
     
-    //   const foo = () => {
-    //     if (!stripe) {
-    //       return;
-    //     }
-    //     const pr = stripe.paymentRequest({
-    //       country: "FI",
-    //       currency: "eur",
-    //       total: {
-    //         label: "Total",
-    //         amount: 1600, // The amount in cents
-    //       },
-    //       // requestPayerName: true,
-    //       // requestPayerEmail: true,
+      const foo = () => {
+        if (!stripe) {
+          return;
+        }
+        const pr = stripe.paymentRequest({
+          country: "FI",
+          currency: "eur",
+          total: {
+            label: "Total",
+            amount: 1600, // The amount in cents
+          },
+          // requestPayerName: true,
+          // requestPayerEmail: true,
     
-    //     });
+        });
     
-    //     pr.canMakePayment().then((result) => {
-    //       if (result) {
-    //         setPaymentRequest(pr);
-    //       }
-    //     });
+        pr.canMakePayment().then((result) => {
+          if (result) {
+            setPaymentRequest(pr);
+          }
+        });
     
-    //     pr.on("paymentmethod", async (ev) => {
-    //       try {
-    //         const sessionId = localStorage.getItem("sessionId");
-    //         const paymentMethodId = ev.paymentMethod.id;
-    //         const requestBody = {
-    //           amount: props.selectedAmount,
-    //           payment_method: paymentMethodId
-    //         }
-    //         const responseData = await authorizePayment(
-    //           props.chargerID,
-    //           props.connectorID,
-    //           requestBody
-    //         ).then((res) => {
-    //           localStorage.setItem("transactionId", res.transaction_id);
-    //           props.setTransactionId(res.transaction_id)
-    //           if (res.transaction_id) {
-    //             ev.complete("success");
-    //             props.setLoading(false);
-    //             // navigate('/ChargingSessionScreen')
-    //             props.setOtp(res.otp)
-    //             // navigate('/OtpScreen')
-    //           }
-    //         });
-    //         // navigate('/ChargingSessionScreen')
-    //       } catch (error) {
-    //         console.error("Payment authorization failed 2:", error);
-    //         setPayButtonClicked(false)
-    //       }
-    //     });
-    //     // if(!paymentRequest){
-    //     //   setPaymentOption('card');
-    //     // }
+        pr.on("paymentmethod", async (ev) => {
+          try {
+            const sessionId = localStorage.getItem("sessionId");
+            const paymentMethodId = ev.paymentMethod.id;
+            const requestBody = {
+              amount: props.selectedAmount,
+              payment_method: paymentMethodId
+            }
+            const responseData = await authorizePayment(
+              props.chargerID,
+              props.connectorID,
+              requestBody
+            ).then((res) => {
+              localStorage.setItem("transactionId", res.transaction_id);
+              props.setTransactionId(res.transaction_id)
+              if (res.transaction_id) {
+                ev.complete("success");
+                props.setLoading(false);
+                // navigate('/ChargingSessionScreen')
+                props.setOtp(res.otp)
+                // navigate('/OtpScreen')
+              }
+            });
+            // navigate('/ChargingSessionScreen')
+          } catch (error) {
+            console.error("Payment authorization failed 2:", error);
+            setPayButtonClicked(false)
+          }
+        });
+        // if(!paymentRequest){
+        //   setPaymentOption('card');
+        // }
       
-    //   }
+      }
     
       const handleSubmit = async (event: any) => {
         // foo();
